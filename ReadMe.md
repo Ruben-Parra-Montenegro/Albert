@@ -6,6 +6,17 @@ I want to learn how to make agents utilizing Langchain, while messing with docli
 
 Essentially making a simple agent anyone with a few free api keys can use, modify and mess around with. A plus would be if I can actually make it usefull.
 
+Goals:
+
+- Utilize MCP
+- Utilize Docling
+- Create an interesting you find useful
+- Make the CLI interesting to look at.(looks like stuff is happening when actions are being taken just to alert you the agent is doing things.)
+- Model configuration 
+- Structured output 
+- Conversational memory 
+- keep it simple and functional(hopefully)
+
 
 ## Requirements
 - Python 3.12.12
@@ -29,3 +40,9 @@ pip install -r requirements.txt
 
 - OPENROUTER_API_KEY = 
 - SERPAPI_API_KEY = 
+
+
+## Usefull resources: 
+
+- https://docs.langchain.com/oss/python/langchain/quickstart
+- https://rust-cli.github.io/book/index.html
