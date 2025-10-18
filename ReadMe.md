@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ## API KEYS to use:
 
-- create your .env file and add these 2 lines:
+1. create your .env file and add these 2 lines:
 
---OPENROUTER_API_KEY = 
---SERPAPI_API_KEY = 
+- OPENROUTER_API_KEY = 
+- SERPAPI_API_KEY = 
