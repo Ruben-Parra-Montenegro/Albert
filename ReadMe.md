@@ -25,5 +25,5 @@ pip install -r requirements.txt
 
 - create your .env file and add these 2 lines:
 
-OPENROUTER_API_KEY = 
-SERPAPI_API_KEY = 
+--OPENROUTER_API_KEY = 
+--SERPAPI_API_KEY = 
