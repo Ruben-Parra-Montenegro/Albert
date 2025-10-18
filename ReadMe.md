@@ -2,7 +2,9 @@
 
 ## Goal
 
-I want to learn how to make agents utilizing Langchain, while messing with docling. I will attempt to make this into a neat little CLI tool
+I want to learn how to make agents utilizing Langchain, while messing with docling. I will attempt to make this into a neat little CLI tool. 
+
+Essentially making a simple agent anyone with a few free api keys can use, modify and mess around with. A plus would be if I can actually make it usefull.
 
 
 ## Requirements
