@@ -47,6 +47,23 @@ pip install -r requirements.txt
 - https://docs.langchain.com/oss/python/langchain/quickstart
 - https://rust-cli.github.io/book/index.html
 
+## features
+
+I tried making it so you can just add custom tools to the user_tools.py file and just forget about everything else.
+
+## config.json
+
+'''bash
+{
+  "model": "nvidia/nemotron-nano-9b-v2:free",
+  "base_url": "https://openrouter.ai/api/v1",
+  "temperature": 0.7,
+  "max_tokens": 2000,
+  "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc."
+
+}
+
+
 ## Output Example
 
 ```bash
