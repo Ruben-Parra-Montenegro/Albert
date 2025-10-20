@@ -47,9 +47,9 @@ pip install -r requirements.txt
 - https://docs.langchain.com/oss/python/langchain/quickstart
 - https://rust-cli.github.io/book/index.html
 
-## Output Example: 
+## Output Example
 
-
+```bash
 ============================================================
 Initializing Albert agent
 ============================================================
