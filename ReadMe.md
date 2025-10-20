@@ -17,6 +17,19 @@ Goals:
 - Conversational memory 
 - keep it simple and functional(hopefully)
 
+## To-Do
+
+- rust cli for the sake of learning rust
+- add playwright functionality
+- add docling functionality
+- investigate mcp servers
+- add allowed actions config file
+- sandbox to wherever the user wants it in some sort of config file
+- make up some creative tools for agents to use
+- work on tuning model responses, I noticed the sample prompt sometimes leads to the model asking a question and not just making a file.
+- previous points leads me to question, i should add a way to respond to the model. this probably involves the agent having memory.
+- langchain site has a bunch of neat features, lets see what we can build with them.(consider implementing them)
+
 
 ## Requirements
 - Python 3.12.12
