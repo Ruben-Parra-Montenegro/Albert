@@ -51,17 +51,31 @@ pip install -r requirements.txt
 
 I tried making it so you can just add custom tools to the user_tools.py file and just forget about everything else.
 
-## config.json
+## Configuration
 
-'''bash
+Albert uses a `config.json` file to customize the AI model settings and behavior. The file is automatically created with default values on first run, or you can create it manually.
+
+**config.json:**
+
+```json
 {
   "model": "nvidia/nemotron-nano-9b-v2:free",
   "base_url": "https://openrouter.ai/api/v1",
   "temperature": 0.7,
   "max_tokens": 2000,
   "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc."
-
 }
+```
+
+**Configuration Options:**
+
+- **model**: The AI model to use (any model from OpenRouter)
+- **base_url**: API endpoint (OpenRouter, OpenAI, etc.)
+- **temperature**: Controls randomness (0.0 = deterministic, 1.0 = creative)
+- **max_tokens**: Maximum response length
+- **system_prompt**: Instructions that define the agent's personality and capabilities
+
+**Note:** The config file is automatically created with defaults if it doesn't exist. You can customize any values to suit your needs!
 
 
 ## Output Example
