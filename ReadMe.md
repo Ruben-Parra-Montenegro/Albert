@@ -10,7 +10,7 @@ Goals:
 
 - Utilize MCP
 - Utilize Docling
-- Create an interesting you find useful
+- Create something you find interesting
 - Make the CLI interesting to look at.(looks like stuff is happening when actions are being taken just to alert you the agent is doing things.)
 - Model configuration 
 - Structured output 
@@ -19,9 +19,15 @@ Goals:
 
 ## To-Do
 
-- rust cli for the sake of learning rust
-- add playwright functionality
-- add docling functionality
+- make list for each item and track separately
+- rust cli
+- playwright functionality
+- docling functionality
+- memory
+- give it a place to work in(sandbox)
+
+## Wish-List
+
 - investigate mcp servers
 - add allowed actions config file
 - sandbox to wherever the user wants it in some sort of config file
@@ -59,6 +65,7 @@ pip install -r requirements.txt
 
 - https://docs.langchain.com/oss/python/langchain/quickstart
 - https://rust-cli.github.io/book/index.html
+- https://www.youtube.com/watch?v=5UA9UWWAagc
 
 ## features
 
