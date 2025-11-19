@@ -20,11 +20,15 @@ Goals:
 ## To-Do
 
 - make list for each item and track separately
-- rust cli
+- make into .exe for running on pc easy
 - playwright functionality
 - docling functionality
 - memory
 - give it a place to work in(sandbox)
+
+## Added(done)
+
+- CLI(python)
 
 ## Wish-List
 

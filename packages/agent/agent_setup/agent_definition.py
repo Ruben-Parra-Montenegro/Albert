@@ -36,7 +36,11 @@ def start_agent(chat_model):
     return agent
 
 # Change this later once we figure out the cli user input stuff
-def call_agent(agent):
-   return agent.invoke(
-        {"messages": [{"role": "user", "content": "Can you write me some rust code that prints albert and put it in a .rs file?"}]}
+# def call_agent(agent):
+#    return agent.invoke(
+#         {"messages": [{"role": "user", "content": "Can you write me some rust code that prints albert and put it in a .rs file?"}]}
+#     )
+def call_agent(agent, message: str):
+    return agent.invoke(
+        {"messages": [{"role": "user", "content": message}]}
     )
