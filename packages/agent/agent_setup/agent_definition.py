@@ -7,6 +7,7 @@ from packages.agent.tools import user_tools, serpapiwrapper
 from packages.helpers.tool_getter import get_all_tools
 from packages.helpers.config import load_config
 
+from langgraph.checkpoint.memory import InMemorySaver
 
 def agent_definition():
     """Initialize the chat model with config settings."""
@@ -28,9 +29,12 @@ def start_agent(chat_model):
     config = load_config()
     tools = get_all_tools(user_tools, serpapiwrapper)
 
+    checkpointer = InMemorySaver()
+
     agent = create_agent(
         model=chat_model, 
         tools=tools,
+        checkpointer=checkpointer,
         system_prompt=config.get("system_prompt", "You are a helpful assistant.")
     )
     return agent
@@ -41,6 +45,11 @@ def start_agent(chat_model):
 #         {"messages": [{"role": "user", "content": "Can you write me some rust code that prints albert and put it in a .rs file?"}]}
 #     )
 def call_agent(agent, message: str):
+
+    config = load_config()  
+    thread_id = config.get("thread_id", "default-session") 
+
     return agent.invoke(
-        {"messages": [{"role": "user", "content": message}]}
+        {"messages": [{"role": "user", "content": message}]},
+        config={"configurable": {"thread_id": thread_id}}
     )

@@ -26,12 +26,14 @@ Goals:
 - memory
 - give it a place to work in(sandbox)
 
+
 ## Added(done)
 
 - CLI(python)
 
 ## Wish-List
 
+- file based checkpointers
 - investigate mcp servers
 - add allowed actions config file
 - sandbox to wherever the user wants it in some sort of config file
@@ -102,7 +104,7 @@ Albert uses a `config.json` file to customize the AI model settings and behavior
 **Note:** The config file is automatically created with defaults if it doesn't exist. You can customize any values to suit your needs!
 
 
-## Output Example
+## Output Example Before taking specific output
 
 ```bash
 ============================================================
@@ -125,3 +127,36 @@ Albert is ready! Starting test conversation...
 ============================================================
 
 {'messages': [HumanMessage(content='Can you write me some rust code that prints albert and put it in a .rs file?', additional_kwargs={}, response_metadata={}, id='2289fdbf-7975-4155-bab0-5d2af0331a02'), AIMessage(content='', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 400, 'prompt_tokens': 371, 'total_tokens': 771, 'completion_tokens_details': None, 'prompt_tokens_details': None}, 'model_provider': 'openai', 'model_name': 'nvidia/nemotron-nano-9b-v2:free', 'system_fingerprint': None, 'id': 'gen-1760924396-gi1nqIZvs2zfhliZyKWH', 'finish_reason': 'tool_calls', 'logprobs': None}, id='lc_run--7529fbdf-2270-4778-a13a-c2ccedc5bf1f-0', tool_calls=[{'name': 'Write_to_file', 'args': {'topic': 'Rust Code', 'file_name': 'albert.rs', 'file_content': 'fn main() {\n    println!("albert");\n}'}, 'id': 'HNb0Lo6mD', 'type': 'tool_call'}], usage_metadata={'input_tokens': 371, 'output_tokens': 400, 'total_tokens': 771, 'input_token_details': {}, 'output_token_details': {}}), ToolMessage(content='File created for Rust Code, with name: albert.rs', name='Write_to_file', id='2eb016ec-5d21-44a8-8799-8f308c47832b', tool_call_id='HNb0Lo6mD'), AIMessage(content='The Rust code has been successfully written to a file named **albert.rs**. The file contains the following code:\n\n```rust\nfn main() {\n    println!("albert");\n}\n```\n\nLet me know if you\'d like to modify the code or need help with anything else!\n', additional_kwargs={'refusal': None}, response_metadata={'token_usage': {'completion_tokens': 165, 'prompt_tokens': 468, 'total_tokens': 633, 'completion_tokens_details': None, 'prompt_tokens_details': None}, 'model_provider': 'openai', 'model_name': 'nvidia/nemotron-nano-9b-v2:free', 'system_fingerprint': None, 'id': 'gen-1760924400-ankJf6IWrURz1ulEa1G1', 'finish_reason': 'stop', 'logprobs': None}, id='lc_run--3d1aa015-13f4-49c8-8ead-965333a6a1d5-0', usage_metadata={'input_tokens': 468, 'output_tokens': 165, 'total_tokens': 633, 'input_token_details': {}, 'output_token_details': {}})]}
+
+'''
+
+## Conversation Memory(none)
+
+Albert uses **LangGraph's MemorySaver** to remember your conversation history. This means:
+
+
+**Example conversation:**
+
+```
+👤 You: my name is ruben
+
+🤖 Albert: Hello, Ruben! How can I assist you today? Let me know if you need help with anything specific, and I'll do my best to support you.
+
+
+👤 You: whats my name?
+
+🤖 Albert: I don't have access to personal information about users unless they provide it during our conversation. Could you please share your name with me? Once you do, I can store it in a file for future reference if you'd like.
+```
+
+## Conversation Memory(has memory)
+
+```
+👤 You: my name is ruben
+
+🤖 Albert: Hello, Ruben! How can I assist you today? Would you like me to create a file, search for information, or help with something specific?
+
+
+👤 You: what is my name
+
+🤖 Albert: Your name is Ruben. 😊 Let me know if you need help with anything else!
+```
