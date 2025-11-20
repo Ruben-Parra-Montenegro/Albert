@@ -19,12 +19,11 @@ Goals:
 
 ## To-Do
 
-- make list for each item and track separately
-- make into .exe for running on pc easy
 - playwright functionality
 - docling functionality
 - memory
 - give it a place to work in(sandbox)
+- make into .exe for running on pc easy
 
 
 ## Added(done)
@@ -41,6 +40,7 @@ Goals:
 - work on tuning model responses, I noticed the sample prompt sometimes leads to the model asking a question and not just making a file.
 - previous points leads me to question, i should add a way to respond to the model. this probably involves the agent having memory.
 - langchain site has a bunch of neat features, lets see what we can build with them.(consider implementing them)
+- Dynamic system prompts and models.(switching between "expert" and "faster" not so expert model)
 
 
 ## Requirements
@@ -89,7 +89,8 @@ Albert uses a `config.json` file to customize the AI model settings and behavior
   "base_url": "https://openrouter.ai/api/v1",
   "temperature": 0.7,
   "max_tokens": 2000,
-  "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc."
+  "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc.",
+   "thread_id": "default-session"
 }
 ```
 
