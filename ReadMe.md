@@ -21,14 +21,14 @@ Goals:
 
 - playwright functionality
 - docling functionality
-- memory
-- give it a place to work in(sandbox)
-- make into .exe for running on pc easy
+- make into .exe for running on pc(windows) easy. Must make config usable by .exe
 
 
 ## Added(done)
 
 - CLI(python)
+- memory
+- give it a place to work in(sandbox), edit config for sandboxing
 
 ## Wish-List
 

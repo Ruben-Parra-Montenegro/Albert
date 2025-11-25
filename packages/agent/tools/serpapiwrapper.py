@@ -1,6 +1,7 @@
 from langchain_community.utilities import SerpAPIWrapper
 import os 
 
+
 api_key = os.getenv("SERPAPI_API_KEY")
 
 def Google_search(Search_topic: str) -> str:
