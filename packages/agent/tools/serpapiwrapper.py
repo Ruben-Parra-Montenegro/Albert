@@ -15,6 +15,19 @@ def Google_search(Search_topic: str) -> str:
   }
   search = SerpAPIWrapper(params=params)
 
-  output = search.run(Search_topic)
+  results = search.results(Search_topic)
 
+  organic_results = results.get("organic_results", [])
+
+  if not organic_results:
+      return "No results found."
+  
+  output = ""     
+  for i, result in enumerate(organic_results[:3], 1):
+      title = result.get("title", "No title")
+      snippet = result.get("snippet", "No snippet")
+      link = result.get("link", "No link")
+      output += f"Result {i}:\nTitle: {title}\nSnippet: {snippet}\nLink: {link}\n\n"
+
+  print(output)
   return f"Here is what I found: {output}"

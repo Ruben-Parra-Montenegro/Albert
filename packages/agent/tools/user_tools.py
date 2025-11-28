@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from packages.helpers.config import load_config
+from playwright.sync_api import sync_playwright, Playwright
 
 
 def Write_to_file(topic: str, file_name: str, file_content: str) -> str:
@@ -29,3 +30,31 @@ def Write_to_file(topic: str, file_name: str, file_content: str) -> str:
         file.write(file_content)
 
     return f"File created for {topic}, with name: {safe_filename} in {sandbox}"
+
+def Web_scrape(url: str) -> str:
+    """
+    Extract text content from a webpage using Playwright.
+    """
+
+    try:
+        with sync_playwright() as playwright:
+            chromium = playwright.chromium 
+            browser = chromium.launch(headless=False)
+            page = browser.new_page()
+            page.goto(url, timeout=30000)
+            print(f"Navigated to {url}")
+            # content = page.content()
+            content = page.inner_text("body")
+
+            page.wait_for_timeout(5000)
+
+            browser.close()
+            print("Webpage content extracted successfully.")
+        if len(content) > 2000:
+            print("Webpage content extracted successfully.")
+            return f"Webpage text (first 2000 chars):\n\n{content[:2000]}...\n\n(Total length: {len(content)} characters)"
+        return f"Webpage text:\n\n{content}"
+
+    
+    except Exception as e:
+        return f"Error: {str(e)}"

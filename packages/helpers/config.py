@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 def load_config(config_path: str = "config.json") -> dict:
-    """Load agent configuration from JSON file."""
+    # """Load agent configuration from JSON file."""
     default_config = {
         "model": "nvidia/nemotron-nano-9b-v2:free",
         "base_url": "https://openrouter.ai/api/v1",

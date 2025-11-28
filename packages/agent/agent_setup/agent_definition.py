@@ -29,6 +29,13 @@ def start_agent(chat_model):
     config = load_config()
     tools = get_all_tools(user_tools, serpapiwrapper)
 
+     # DEBUG: Print all tools found
+    print("\n🔍 DEBUG: Tools found:")
+    for tool in tools:
+        print(f"  - {tool.__name__}")
+        print(f"    Docstring: {tool.__doc__}")
+    print()
+
     checkpointer = InMemorySaver()
 
     agent = create_agent(

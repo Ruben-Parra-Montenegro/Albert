@@ -19,13 +19,18 @@ Goals:
 
 ## To-Do
 
-- playwright functionality
-- docling functionality
+- playwright functionality, maybe allow auto web nav(by pulling css or html, whatever to make informed decsisions)
+- only let agent read look at pdfs
+- docling functionality(convert pdfs to markdown with all info extracted and send to vector storage)
+- vector storage with correct embedding model for LLM we are running
 - make into .exe for running on pc(windows) easy. Must make config usable by .exe
+- Maybe expand on the features section
+- Work on doc strings for tools
 
 
 ## Added(done)
 
+- Playwrite allows for web scraping. combined with the serpapi web search thing we can find urls to scrape.
 - CLI(python)
 - memory
 - give it a place to work in(sandbox), edit config for sandboxing
@@ -45,6 +50,10 @@ Goals:
 
 ## Requirements
 - Python 3.12.12
+
+## Playwrite
+- make sure to install your browser, in my case I chose chromium
+- playwright install chromium
 
 ## Installation
 
