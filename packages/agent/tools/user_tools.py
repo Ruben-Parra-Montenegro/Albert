@@ -58,3 +58,51 @@ def Web_scrape(url: str) -> str:
     
     except Exception as e:
         return f"Error: {str(e)}"
+
+def file_name_extractor() -> str:
+    """
+    Extract the file names from a given file, for use by the agent.
+
+    When prompted to pick a PDF to convert, this function will list the available PDF files in the sandboxed directory.
+    """
+
+    config = load_config()
+    docling_in_sandbox = Path(config.get("docling_in_directory", "./sandbox")).resolve()
+
+    pdf_files = list(docling_in_sandbox.glob("*.pdf"))
+
+    return "\n".join([os.path.basename(pdf) for pdf in pdf_files])
+
+
+def PDF_converter_to_MD(file_name: str) -> str:
+    """
+    Convert a PDF file to Markdown format using Docling, using the file_name_extractor function for pdf names to pick.
+    """
+
+    from docling.document_converter import DocumentConverter
+
+    config = load_config()
+    docling_in_sandbox = Path(config.get("docling_in_directory", "./sandbox")).resolve()
+    docling_out_sandbox = Path(config.get("docling_out_directory", "./sandbox")).resolve()
+
+    safe_filename = os.path.basename(file_name)
+
+    input_file = docling_in_sandbox / safe_filename
+
+    try:
+        result = DocumentConverter().convert(input_file)
+
+        output_filename = f"{input_file.stem}.md"
+        output_path = docling_out_sandbox / output_filename
+
+        markdown_content = result.document.export_to_markdown()
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(markdown_content)
+
+
+        preview = markdown_content[:500] if len(markdown_content) > 500 else markdown_content
+        return f"Converted: {safe_filename}\n Output: {output_path}\n\n Preview:\n{preview}..."
+        
+    except Exception as e:
+            return f"Error converting {safe_filename}: {str(e)}"

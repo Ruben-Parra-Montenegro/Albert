@@ -19,6 +19,7 @@ Goals:
 
 ## To-Do
 
+- allow model to be able to modify files anywhere within sandbox
 - playwright functionality, maybe allow auto web nav(by pulling css or html, whatever to make informed decsisions)
 - only let agent read look at pdfs
 - docling functionality(convert pdfs to markdown with all info extracted and send to vector storage)
@@ -170,4 +171,55 @@ Albert uses **LangGraph's MemorySaver** to remember your conversation history. T
 👤 You: what is my name
 
 🤖 Albert: Your name is Ruben. 😊 Let me know if you need help with anything else!
+```
+
+
+## Hinting Agent on how to use its tools
+
+So when working with agent and giving it tools. I ran into this when trying to get the agent to use docling without giving it a explicit name of the pdf. So I added a function that lists the file names in a given directory defined by the config file. I gave each function the simple doc string and called it good. 
+
+One interesting thing to take from this would be that the agent did not use the name list function when propmted for the first time, I had to explain what the function did and how it worked for it to realize it could use the tool in this way. 
+
+This goes to show that you need to adjust the agents system prompt or doc string to allow it to understand more what can be done.
+
+
+```
+👤 You: can you convert my resume to a markdown file?
+
+🤖 Albert: To convert your resume to a Markdown file, I'll need the file name of your PDF resume. Could you please provide the exact name of the PDF file (e.g., "John_Doe_Resume.pdf")? Once I have that, I can proceed with the conversion.
+
+
+👤 You: can you use the file_name_extractor function instead
+
+🤖 Albert: The `file_name_extractor` function as defined does not accept any parameters, so it cannot dynamically retrieve or identify a specific file (like your resume PDF) to process. To proceed, I still need the **exact file name** of your resume PDF (e.g., "John_Doe_Resume.pdf") to use the `PDF_converter_to_MD` tool.
+
+Could you share the file name?
+
+
+👤 You: yes but you can execute it correct?
+
+🤖 Albert: The `file_name_extractor` function, as defined in the tools, does **not** accept parameters (like a file name or directory) to identify which specific file to process. It would need to be designed differently to work in your scenario (e.g., by scanning a directory or prompting for input). Since it’s not possible to dynamically find your resume file with the current tool specs, I still need the **exact file name** of your resume PDF (e.g., "John_Doe_Resume.pdf") to proceed with the conversion. Would you like to share it?
+
+
+👤 You: no run the tool i gave you, it will list the file names in a directory for you to use 
+```
+
+
+## Interesting things to look into later
+
+Making the agent able to edit anything within the sandbox would be nice for this specifically
+
+```
+🤖 Albert: Your resume has been successfully converted to Markdown format! The converted file is located at:
+`D:\Projects\sandbox\docling\md\resume.md`
+
+Would you like me to help you edit the Markdown content, add specific sections, or convert it to another format?
+
+
+👤 You: yes the mark down has my number in it can you remove it?
+
+🤖 Albert: Your resume has been updated and the phone number has been removed! The modified file is now located at:
+`D:\Projects\sandbox\resume_modified.md`
+
+Would you like me to remove any other contact information (like email or links) or make additional changes to the Markdown formatting?
 ```

@@ -5,6 +5,8 @@
   "max_tokens": 2000,
   "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc.",
   "thread_id": "default-session",
-  "sandbox_directory": "D:/Projects/sandbox"
+  "sandbox_directory": "D:/Projects/sandbox",
+  "docling_in_directory": "D:/Projects/sandbox/docling/pdf_not_conv",
+  "docling_out_directory": "D:/Projects/sandbox/docling/md"
 }
 
