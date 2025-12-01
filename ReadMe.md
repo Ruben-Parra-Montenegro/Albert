@@ -233,7 +233,7 @@ The project includes the ability for the agent to take a pdf, convert it to mark
 
 With the markdown, you can then store it in vector storage for the model to pull from. Below is an example of the agent being asked a question.
 
-It was able to use the context given to seacrch for the info in the vector store.
+It was able to use the context given to search for the info in the vector store.
 
 ```               
 ============================================================
