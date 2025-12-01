@@ -1,5 +1,53 @@
 # Final Project - Albert
 
+## Why work on this:
+
+Building a practical AI agent to learn LangChain fundamentals, RAG implementation, and tool integration. Started with minimal knowledge of how agents, vector databases, or embeddings worked—this project forced me to understand how everything connects. Goal: create a simple, functional CLI tool anyone can use with free API keys.
+
+## Technologies used:
+
+- Langchain (Agent Framework)
+- Docling (PDF → Markdown extraction)
+- Playwright (Web scraping)
+- OpenRouter (LLM API)
+- ChromaDB (Vector storage)
+- Sentence-Transformers (Embeddings)
+- SerpAPI (Google Search)
+
+## Capabilities:
+
+- Conversational memory using LangGraph's MemorySaver
+- Web search via SerpAPI + scraping with Playwright
+- PDF to Markdown conversion (Docling) with table extraction
+- Vector storage (ChromaDB) for RAG-based retrieval
+- Sandboxed file creation/management (configurable directory)
+- Python CLI interface
+- Model and sandbox configuration via `config.json`
+
+## What did I learn:
+
+- Agent architecture and how LangChain orchestrates tool calls + memory
+- RAG pipelines with vector embeddings (ChromaDB + Sentence-Transformers)
+- Custom tool design and function calling
+- Model limitations (smaller models struggle with complex tool calls)
+- Prompt engineering impact on agent behavior
+- Security basics (path sanitization, sandboxing, input validation)
+- PDF data extraction with Docling (tables, formatting preservation)
+- Debugging agents (sometimes you need to explicitly teach tool usage)
+- API rate limits and provider differences (OpenRouter vs. Groq)
+
+## Future work:
+
+- File-based checkpointers for persistent conversation history
+- MCP (Model Context Protocol) server integration
+- Permission/allowed actions configuration system
+- System prompt optimization to reduce clarifying questions
+- Dynamic model switching (expert vs. fast modes)
+- Autonomous web navigation via HTML/CSS analysis
+- Additional LangChain features (chains, LCEL, etc.)
+
+# Final Project - Albert(Project Notes)
+
 ## Goal
 
 I want to learn how to make agents utilizing Langchain, while messing with docling. I will attempt to make this into a neat little CLI tool. 
@@ -50,7 +98,7 @@ Goals:
 ## Requirements
 - Python 3.12.12
 
-## Playwrite
+## Playwright
 - make sure to install your browser, in my case I chose chromium
 - playwright install chromium
 
