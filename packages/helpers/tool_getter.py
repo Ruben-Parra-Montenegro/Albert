@@ -7,7 +7,7 @@ def get_all_tools(*modules):
     for module in modules:
         for name, obj in inspect.getmembers(module):
 
-            # Skip if it doesn't have a docstring, some imports may not have docstrings
+            # Skip if it doesn't have a docstring, some imports may not have docstrings. Had problems with imports, functions inside of functions needing docstrings. I think thats how it worked
             
             if not obj.__doc__:
                 continue

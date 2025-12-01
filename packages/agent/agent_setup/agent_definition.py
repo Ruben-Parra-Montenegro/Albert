@@ -3,6 +3,7 @@ import os
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI 
 
+# Remember to add modules you create here for tools
 from packages.agent.tools import user_tools, serpapiwrapper, vector_tools
 from packages.helpers.tool_getter import get_all_tools
 from packages.helpers.config import load_config
