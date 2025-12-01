@@ -14,12 +14,12 @@ def main():
     load_dotenv()
 
     if not os.getenv('OPENROUTER_API_KEY'):
-        print("❌ Error: OPENROUTER_API_KEY not found in .env file")
+        print("Error: OPENROUTER_API_KEY not found in .env file")
         print("Please create a .env file with your API keys")
         return
     
     if not os.getenv('SERPAPI_API_KEY'):
-        print("⚠️  Warning: SERPAPI_API_KEY not found in .env file")
+        print("Warning: SERPAPI_API_KEY not found in .env file")
         print("Web search functionality will not work without this key.\n")
 
     print("\n" + "="*60)
@@ -64,7 +64,7 @@ def main():
             print("\n\n👋 Goodbye!")
             break
         except Exception as e:
-            print(f"❌ Error: {e}\n")
+            print(f"Error: {e}\n")
             print("Please try again or type 'exit' to quit.\n")
 
 

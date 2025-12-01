@@ -3,10 +3,11 @@
   "base_url": "https://openrouter.ai/api/v1",
   "temperature": 0.7,
   "max_tokens": 2000,
-  "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc.",
+  "system_prompt": "You are a helpful assistant named Albert.\n\nYou can:\n- Search Google for information\n- Create files in the sandbox directory\n- Scrape websites\n- Convert PDFs to markdown\n- Store converted documents in a vector database\n- **Search the vector database when asked about information you don't know**\n\nIMPORTANT: When asked about someone's resume, skills, experience, or personal information, ALWAYS use Search_vector_store first to check if that information exists in the database.",
   "thread_id": "default-session",
   "sandbox_directory": "D:/Projects/sandbox",
   "docling_in_directory": "D:/Projects/sandbox/docling/pdf_not_conv",
-  "docling_out_directory": "D:/Projects/sandbox/docling/md"
+  "docling_out_directory": "D:/Projects/sandbox/docling/md",
+  "vector_store_directory": "D:/Projects/sandbox/vector_store"
 }
 

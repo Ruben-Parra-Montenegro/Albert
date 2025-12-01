@@ -8,12 +8,10 @@ Essentially making a simple agent anyone with a few free api keys can use, modif
 
 Goals:
 
-- Utilize MCP
 - Utilize Docling
 - Create something you find interesting
-- Make the CLI interesting to look at.(looks like stuff is happening when actions are being taken just to alert you the agent is doing things.)
-- Model configuration 
-- Structured output 
+- utilize vector store for RAG
+- Model configuration  
 - Conversational memory 
 - keep it simple and functional(hopefully)
 
@@ -21,12 +19,9 @@ Goals:
 
 - allow model to be able to modify files anywhere within sandbox
 - playwright functionality, maybe allow auto web nav(by pulling css or html, whatever to make informed decsisions)
-- only let agent read look at pdfs
-- docling functionality(convert pdfs to markdown with all info extracted and send to vector storage)
-- vector storage with correct embedding model for LLM we are running
-- make into .exe for running on pc(windows) easy. Must make config usable by .exe
 - Maybe expand on the features section
 - Work on doc strings for tools
+- Test how different models handle things.
 
 
 ## Added(done)
@@ -35,6 +30,9 @@ Goals:
 - CLI(python)
 - memory
 - give it a place to work in(sandbox), edit config for sandboxing
+- docling functionality(convert pdfs to markdown with all info extracted and send to vector storage)
+- can access vector storage
+- can scrape websites
 
 ## Wish-List
 
@@ -82,6 +80,7 @@ pip install -r requirements.txt
 - https://docs.langchain.com/oss/python/langchain/quickstart
 - https://rust-cli.github.io/book/index.html
 - https://www.youtube.com/watch?v=5UA9UWWAagc
+- https://openrouter.ai/
 
 ## features
 
@@ -99,8 +98,12 @@ Albert uses a `config.json` file to customize the AI model settings and behavior
   "base_url": "https://openrouter.ai/api/v1",
   "temperature": 0.7,
   "max_tokens": 2000,
-  "system_prompt": "You are a helpful assistant.\n\nYou are able to do various things:\n\n- Search Google for relevant information on a topic.\n- Create files and write to them, for things such as notes, code files, etc.",
-   "thread_id": "default-session"
+  "system_prompt": "You are a helpful assistant named Albert.\n\nYou can:\n- Search Google for information\n- Create files in the sandbox directory\n- Scrape websites\n- Convert PDFs to markdown\n- Store converted documents in a vector database\n- **Search the vector database when asked about information you don't know**\n\nIMPORTANT: When asked about someone's resume, skills, experience, or personal information, ALWAYS use Search_vector_store first to check if that information exists in the database.",
+  "thread_id": "default-session",
+  "sandbox_directory": "D:/Projects/sandbox",
+  "docling_in_directory": "D:/Projects/sandbox/docling/pdf_not_conv",
+  "docling_out_directory": "D:/Projects/sandbox/docling/md",
+  "vector_store_directory": "D:/Projects/sandbox/vector_store"
 }
 ```
 
@@ -222,4 +225,48 @@ Would you like me to help you edit the Markdown content, add specific sections, 
 `D:\Projects\sandbox\resume_modified.md`
 
 Would you like me to remove any other contact information (like email or links) or make additional changes to the Markdown formatting?
+```
+
+## Vector Store Demo
+
+The project includes the ability for the agent to take a pdf, convert it to markdown using docling. This can extract useful tables and such.
+
+With the markdown, you can then store it in vector storage for the model to pull from. Below is an example of the agent being asked a question.
+
+It was able to use the context given to seacrch for the info in the vector store.
+
+```               
+============================================================
+Initializing Albert agent
+============================================================
+
+
+============================================================
+Chat model initialized
+============================================================
+
+
+
+============================================================
+Agent created with tools
+============================================================
+
+
+============================================================
+Albert is ready! Starting test conversation...
+Type 'exit', 'quit', or 'q' to stop.
+============================================================
+
+👤 You: can you tell me about my resume, maybe what job i currently work?
+
+🤖 Albert: Based on your resume stored in the vector database, your **current job** is listed as:
+
+**Process Manufacturing Engineer at Nylok LLC**
+📍 Macomb, MI
+📅 Started: March 2024
+
+This role is in **Automation Engineering** according to your resume. Would you like me to share more details about this position or other sections of your resume?
+
+
+👤 You:
 ```

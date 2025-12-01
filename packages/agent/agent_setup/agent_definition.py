@@ -3,7 +3,7 @@ import os
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI 
 
-from packages.agent.tools import user_tools, serpapiwrapper
+from packages.agent.tools import user_tools, serpapiwrapper, vector_tools
 from packages.helpers.tool_getter import get_all_tools
 from packages.helpers.config import load_config
 
@@ -13,7 +13,7 @@ def agent_definition():
     """Initialize the chat model with config settings."""
     
     config = load_config()
-    
+    #model=config.get("model", "x-ai/grok-4.1-fast:free"),
     chat_model = ChatOpenAI(
         model=config.get("model", "nvidia/nemotron-nano-9b-v2:free"),
         base_url=config.get("base_url", "https://openrouter.ai/api/v1"),
@@ -27,10 +27,10 @@ def agent_definition():
 def start_agent(chat_model):
     """Create an agent with the chat model and tools."""
     config = load_config()
-    tools = get_all_tools(user_tools, serpapiwrapper)
+    tools = get_all_tools(user_tools, serpapiwrapper, vector_tools)
 
-     # DEBUG: Print all tools found
-    print("\n🔍 DEBUG: Tools found:")
+    
+    print("\nTools found:")
     for tool in tools:
         print(f"  - {tool.__name__}")
         print(f"    Docstring: {tool.__doc__}")

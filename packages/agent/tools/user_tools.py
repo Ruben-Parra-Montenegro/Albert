@@ -59,17 +59,30 @@ def Web_scrape(url: str) -> str:
     except Exception as e:
         return f"Error: {str(e)}"
 
-def file_name_extractor() -> str:
+def file_name_extractor(pdf_to_markdown: bool) -> str:
     """
+    When someone asks to convert pdfs to markdown, you will use this function to find the available pdf files. Use context to decide which pdf to convert.
+
+    Or If someone wants to add to the vector store, use this to find the available markdown files. While making the pdf_to_markdown parameter False.
+
     Extract the file names from a given file, for use by the agent.
 
     When prompted to pick a PDF to convert, this function will list the available PDF files in the sandboxed directory.
+
+    Decide whether this operation is for Docling input or output based on the for_docling parameter. True or False. If it is False you will use the name for the vector store adding.
     """
 
     config = load_config()
-    docling_in_sandbox = Path(config.get("docling_in_directory", "./sandbox")).resolve()
 
-    pdf_files = list(docling_in_sandbox.glob("*.pdf"))
+    if pdf_to_markdown:
+
+        docling_in_sandbox = Path(config.get("docling_in_directory", "./sandbox")).resolve()
+        pdf_files = list(docling_in_sandbox.glob("*.pdf"))
+    else:
+        docling_out_sandbox = Path(config.get("docling_out_directory", "./sandbox")).resolve()
+        pdf_files = list(docling_out_sandbox.glob("*.pdf"))
+
+    
 
     return "\n".join([os.path.basename(pdf) for pdf in pdf_files])
 
