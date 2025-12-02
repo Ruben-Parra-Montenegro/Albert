@@ -29,3 +29,17 @@ target/
 Cargo.lock
 **/*.rs.bk
 *.pdb
+
+# LaTeX - ignore auxiliary files, keep only PDF
+Latex_report/*.aux
+Latex_report/*.log
+Latex_report/*.out
+Latex_report/*.toc
+Latex_report/*.fdb_latexmk
+Latex_report/*.fls
+Latex_report/*.synctex.gz
+Latex_report/*.bbl
+Latex_report/*.blg
+Latex_report/*.bcf
+Latex_report/*.run.xml
+Latex_report/*.tex

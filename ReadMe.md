@@ -309,8 +309,8 @@ Type 'exit', 'quit', or 'q' to stop.
 
 🤖 Albert: Based on your resume stored in the vector database, your **current job** is listed as:
 
-**Process Manufacturing Engineer at Nylok LLC**
-📍 Macomb, MI
+**Process Manufacturing Engineer at something LLC**
+📍 somewhere
 📅 Started: March 2024
 
 This role is in **Automation Engineering** according to your resume. Would you like me to share more details about this position or other sections of your resume?
